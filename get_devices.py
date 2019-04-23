@@ -28,8 +28,9 @@ for matchNum, match in enumerate(namesMatches, start=1):
             airPodsPosition = matchNum
 
 # Remove AirPods and prepend them
-deviceMacs.insert(0, deviceMacs.pop(airPodsPosition - 1))
-deviceNames.insert(0, deviceNames.pop(airPodsPosition - 1))
+if airPodsPosition != -1:
+    deviceMacs.insert(0, deviceMacs.pop(airPodsPosition - 1))
+    deviceNames.insert(0, deviceNames.pop(airPodsPosition - 1))
 
 menu = {
     "items": [
