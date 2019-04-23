@@ -780,7 +780,15 @@ fi</string>
 		</dict>
 	</array>
 	<key>readme</key>
-	<string></string>
+	<string>This Alfred workflow helps you to quickly connect to your AirPods using the Alfred search or a hotkey.
+
+
+Make sure to follow the installation instructions on:
+https://github.com/mariuskiessling/alfred-airpods-connector
+
+On your first run, you have to select the bluetooth device that are your AirPods. Once you have done this you can use the airp keyword to connect / disconnect your AirPods. Whenever you want to change the device you can use the airp config keyword to select a new bluetooth device.
+
+By default, this workflow also offers the ability to trigger a connect / disconnect action using a hotkey. The default hotkey is ⌃ Ctrl + ⇧ Shift + ⌘ Cmd + A.</string>
 	<key>uidata</key>
 	<dict>
 		<key>01344906-E1B8-4115-AED5-B6C0ED22FBDD</key>
@@ -959,10 +967,14 @@ fi</string>
 		<key>AIRPODS_MAC</key>
 		<string>00-18-a3-07-0e-98</string>
 		<key>WORKFLOW_CONFIGURED</key>
-		<string>true</string>
+		<string>false</string>
 	</dict>
+	<key>variablesdontexport</key>
+	<array>
+		<string>AIRPODS_MAC</string>
+	</array>
 	<key>version</key>
-	<string></string>
+	<string>1.0</string>
 	<key>webaddress</key>
 	<string>https://mariuskiessling.de/</string>
 </dict>
