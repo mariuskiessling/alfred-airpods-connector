@@ -12,7 +12,7 @@
    ```
    Make sure to have [`brew`](https://brew.sh/) installed.
 
-2) Download the workflow file [here]() and import it.
+2) Download the workflow file [here](https://github.com/packal/repository/raw/master/de.mariuskiessling.alfred-airpods-connector/airpods_connector.alfredworkflow) and import it.
 
 ###### In case of errors
 If you encounter any errors running the workflow double-check the steps above and test wether you have Python installed on your system (version 2.7 and version 3.* are compatible with this workflow).
