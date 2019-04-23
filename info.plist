@@ -570,14 +570,6 @@ fi</string>
 			<integer>2</integer>
 		</dict>
 		<dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.junction</string>
-			<key>uid</key>
-			<string>420CF40D-9012-4C63-813F-84A47893A229</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
 			<key>config</key>
 			<dict>
 				<key>argument</key>
@@ -592,6 +584,14 @@ fi</string>
 			<string>alfred.workflow.utility.argument</string>
 			<key>uid</key>
 			<string>A4AE1E72-2AEF-4CAA-AE28-77D1F14A245A</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.junction</string>
+			<key>uid</key>
+			<string>420CF40D-9012-4C63-813F-84A47893A229</string>
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
@@ -965,7 +965,7 @@ By default, this workflow also offers the ability to trigger a connect / disconn
 	<key>variables</key>
 	<dict>
 		<key>AIRPODS_MAC</key>
-		<string>00-18-a3-07-0e-98</string>
+		<string></string>
 		<key>WORKFLOW_CONFIGURED</key>
 		<string>false</string>
 	</dict>
@@ -974,7 +974,7 @@ By default, this workflow also offers the ability to trigger a connect / disconn
 		<string>AIRPODS_MAC</string>
 	</array>
 	<key>version</key>
-	<string>1.0</string>
+	<string>1.1</string>
 	<key>webaddress</key>
 	<string>https://mariuskiessling.de/</string>
 </dict>
