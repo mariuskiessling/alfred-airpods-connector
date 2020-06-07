@@ -12,7 +12,7 @@
    ```
    Make sure to have [`brew`](https://brew.sh/) installed. This will install the latest version of BluetoothConnector. Unfortunately BluetoothConnector is not @-versioned. Thus, make sure that brew installs version `2.0.0+` of BluetoothConnector or upgrade using
    ```
-  brew upgrade bluetoothconnector
+   brew upgrade bluetoothconnector
    ```
    in case you update from an older version of this workflow.
 
