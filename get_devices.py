@@ -4,13 +4,14 @@ import os
 import re
 import json
 
-devicesRaw = os.popen('/bin/bash -c /usr/local/bin/BluetoothConnector').read()
+TRUE, pout = os.popen4('/bin/bash -c /usr/local/bin/BluetoothConnector')
+devicesRaw = pout.read()
 
 deviceMacs = []
 deviceNames = []
 airPodsPosition = -1
 
-macsRegex = r"(?!Usage|Get|\n)^\S*"
+macsRegex = r"^([0-9A-Fa-f]{2}[-]){5}([0-9A-Fa-f]{2})"
 macsMatches = re.finditer(macsRegex, devicesRaw, re.MULTILINE)
 
 for matchNum, match in enumerate(macsMatches, start=1):
