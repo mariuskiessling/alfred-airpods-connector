@@ -1,11 +1,13 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
-import os
+import subprocess
 import re
 import json
 
-TRUE, pout = os.popen4('/bin/bash -c /usr/local/bin/BluetoothConnector')
-devicesRaw = pout.read()
+# Borrowed from andrethrill's GitHub comment on fixing this for M1s
+# https://github.com/mariuskiessling/alfred-airpods-connector/issues/9#issuecomment-798798746
+out = subprocess.run('/opt/homebrew/bin/BluetoothConnector', capture_output=True, text=True)
+devicesRaw = out.stderr
 
 deviceMacs = []
 deviceNames = []
