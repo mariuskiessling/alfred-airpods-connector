@@ -25,7 +25,7 @@ if is_invalid_mac_configured():
     # Getting here means that the workflow reports as configured but the MAC address is not valid
     error_title = "Invalid Configuration!"
     error_subtitle = "Reset workflow variables and re-run configuration."
-    menu = create_menu_json(unconfigured_title, error_subtitle, STATUS_ERROR, ERROR_ICON_PATH)
+    menu = create_menu_json(error_title, error_subtitle, STATUS_ERROR, ERROR_ICON_PATH)
     print(json.dumps(menu))
     sys.exit()
 
