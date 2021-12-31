@@ -21,7 +21,7 @@ ERROR_ICON_PATH = "error.png"
 
 
 if is_invalid_mac_configured():
-    unconfigured_title = "Your setup isn't completet yet (MAC address of AirPods not defined)."
+    unconfigured_title = "No AirPods Configured"
     unconfigured_subtitle = "Configure your AirPods device to get started."
     menu = create_menu_json(unconfigured_title, unconfigured_subtitle, STATUS_UNCONFIGURED, UNCONFIGURED_ICON_PATH)
     print(json.dumps(menu))
