@@ -13,6 +13,7 @@ from bluetooth_status_parser_utils import STATUS_NOT_FOUND
 from bluetooth_status_parser_utils import STATUS_CONNECTED
 from bluetooth_status_parser_utils import STATUS_DISCONNECTED
 from bluetooth_status_parser_utils import STATUS_UNCONFIGURED
+from bluetooth_status_parser_utils import STATUS_ERROR
 
 ICON_PATH = "icon.png"
 DISCONNECT_ICON_PATH = "disconnect.png" # used when connected
@@ -21,9 +22,10 @@ ERROR_ICON_PATH = "error.png"
 
 
 if is_invalid_mac_configured():
-    unconfigured_title = "No AirPods Configured"
-    unconfigured_subtitle = "Configure your AirPods device to get started."
-    menu = create_menu_json(unconfigured_title, unconfigured_subtitle, STATUS_UNCONFIGURED, UNCONFIGURED_ICON_PATH)
+    # Getting here means that the workflow reports as configured but the MAC address is not valid
+    error_title = "Invalid Configuration!"
+    error_subtitle = "Reset workflow variables and re-run configuration."
+    menu = create_menu_json(unconfigured_title, error_subtitle, STATUS_ERROR, ERROR_ICON_PATH)
     print(json.dumps(menu))
     sys.exit()
 

@@ -8,6 +8,7 @@ STATUS_NOT_FOUND = "not found"
 STATUS_CONNECTED = "connected"
 STATUS_DISCONNECTED = "disconnected"
 STATUS_UNCONFIGURED = "unconfigured"
+STATUS_ERROR = "error"
 
 def get_connection_status(assume_disconnected=False):
     mac = os.getenv('AIRPODS_MAC')
