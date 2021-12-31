@@ -13,20 +13,15 @@ from bluetooth_status_parser_utils import STATUS_NOT_FOUND
 from bluetooth_status_parser_utils import STATUS_CONNECTED
 from bluetooth_status_parser_utils import STATUS_DISCONNECTED
 from bluetooth_status_parser_utils import STATUS_UNCONFIGURED
-from bluetooth_status_parser_utils import STATUS_ERROR
 
 ICON_PATH = "icon.png"
 DISCONNECT_ICON_PATH = "disconnect.png" # used when connected
 UNCONFIGURED_ICON_PATH = "unconfigured.png" 
 ERROR_ICON_PATH = "error.png" 
 
-
 if is_invalid_mac_configured():
-    # Getting here means that the workflow reports as configured but the MAC address is not valid
-    error_title = "Invalid Configuration!"
-    error_subtitle = "Reset workflow variables and re-run configuration."
-    menu = create_menu_json(error_title, error_subtitle, STATUS_ERROR, ERROR_ICON_PATH)
-    print(json.dumps(menu))
+    # This is an exit strategy to avoid showing connection options when a MAC is not configured
+    # We can't show an error status here because this is triggered for the initial config too
     sys.exit()
 
 mac = get_configured_mac(True)
