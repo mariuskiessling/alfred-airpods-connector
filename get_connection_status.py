@@ -24,10 +24,10 @@ if is_invalid_mac_configured():
     # We can't show an error status here because this is triggered for the initial config too
     sys.exit()
 
-mac = get_configured_mac(True)
+mac = get_configured_mac()
 
-status = get_connection_status(False)          
-    
+status = get_connection_status(False)
+
 title = "Cancel (AirPods not found)"
 icon_path = ERROR_ICON_PATH
 
