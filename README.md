@@ -4,6 +4,14 @@
 <img width="200" alt="Alfred Airpods Connector" src="icon.png"/>
 </p>
 
+## No Longer Maintained
+
+I don't know if the original fork of the repo is still being maintained, but I have stopped using Alfred in favor of Raycast.
+
+I have [heard](https://github.com/mariuskiessling/alfred-airpods-connector/issues/9#issuecomment-1439166979) that this might have issues with newer macOS versions, sorry I wont' have a chance to fix it!
+
+-------
+
 This [Alfred v4](https://www.alfredapp.com/) workflow helps you to quickly connect to your AirPods using the Alfred search or a hotkey.
 
 Check out the [Raycast variant](https://github.com/mikeoertli/raycast-airpods-connector) too, if you use Raycast instead/also.
