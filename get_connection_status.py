@@ -1,57 +1,53 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import os
 import re
 import json
 import sys
+from bluetooth_status_parser_utils import get_connection_status
+from bluetooth_status_parser_utils import is_failed_status
+from bluetooth_status_parser_utils import create_menu_json
+from bluetooth_status_parser_utils import get_configured_mac
+from bluetooth_status_parser_utils import is_invalid_mac_configured
+from bluetooth_status_parser_utils import STATUS_NOT_FOUND
+from bluetooth_status_parser_utils import STATUS_CONNECTED
+from bluetooth_status_parser_utils import STATUS_DISCONNECTED
+from bluetooth_status_parser_utils import STATUS_UNCONFIGURED
 
-mac = os.getenv('AIRPODS_MAC')
+ICON_PATH = "icon.png"
+DISCONNECT_ICON_PATH = "disconnect.png" # used when connected
+UNCONFIGURED_ICON_PATH = "unconfigured.png" 
+ERROR_ICON_PATH = "error.png" 
 
-if mac == None or mac == "":
-    menu = {
-        "items": [
-            {
-                "uid": 0,
-                "type": "default",
-                "title": "Your setup isn't completet yet.",
-                "subtitle": "Configure your AirPods device to get started.",
-                "arg": "unconfigured",
-                "icon": {
-                    "path": "unconfigured.png"
-                }
-            }
-        ]
-    }
-    print(json.dumps(menu))
+if is_invalid_mac_configured():
+    # This is an exit strategy to avoid showing connection options when a MAC is not configured
+    # We can't show an error status here because this is triggered for the initial config too
     sys.exit()
 
-devices = os.popen('/bin/bash -c "system_profiler SPBluetoothDataType"').read()
+mac = get_configured_mac()
 
-connectedRegex = r"(Address: " + mac.upper() + "(.*\n)*?.*Connected: )(Yes|No)"
-statusMatch = re.finditer(connectedRegex, devices, re.MULTILINE)
+status = get_connection_status(False)
 
-status = ""
+title = "Cancel (AirPods not found)"
+icon_path = ERROR_ICON_PATH
 
-for matchNum, match in enumerate(statusMatch):
-    if match.group() != '':
-        if match.group(3) == "Yes":
-            status = "connected"
-        else:
-            status = "disconnected"
+if status == STATUS_DISCONNECTED:
+    title = "Connect AirPods"
+    icon_path = ICON_PATH
+elif status == STATUS_CONNECTED:
+    title = "Disconnect AirPods"
+    icon_path = DISCONNECT_ICON_PATH
 
-menu = {
-    "items": [
-        {
-            "uid": 0,
-            "type": "default",
-            "title": "Disconnect AirPods" if status == "connected" else "Connect AirPods",
-            "subtitle": "Status: " + status,
-            "arg": status,
-            "icon": {
-                "path": "icon.png" if status == "disconnected" else "disconnect.png"
-            }
-        }
-    ]
-}
+subtitle = "Status: " + status
+if status == STATUS_NOT_FOUND:
+    subtitle = "Cancel/exit without taking action. (MAC = " + str(mac) + ")" 
+
+menu = create_menu_json(title, subtitle, status, icon_path)
 
 print(json.dumps(menu))
+
+if is_failed_status(status):
+    # Prevent processing output for next stage since it failed
+    sys.exit()
+
+
